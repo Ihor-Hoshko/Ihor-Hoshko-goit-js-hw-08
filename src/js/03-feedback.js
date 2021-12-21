@@ -2,6 +2,8 @@ import throttle from 'lodash.throttle';
 
 const refs = {
   form: document.querySelector('.feedback-form'),
+  email: document.querySelector('email'),
+  message: document.querySelector('message'),
 };
 let formData = {
   email: '',
@@ -21,7 +23,12 @@ function onInput(event) {
 
 function onFormSubmit(event) {
   event.preventDefault();
-  console.log(formData);
+  const data = {
+    email: refs.form.email.value,
+    message: refs.form.message.value,
+  };
+
+  console.log(data);
   event.currentTarget.reset();
   localStorage.removeItem(storageKey);
 }
